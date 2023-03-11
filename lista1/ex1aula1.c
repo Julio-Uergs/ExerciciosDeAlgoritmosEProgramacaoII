@@ -26,3 +26,4 @@ int main () {
 	imprime(vctr);
 	printf("}\n");
 }
+//hmmm
