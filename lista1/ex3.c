@@ -14,8 +14,8 @@ void prntvctr(int vctr[size]) {
 	}
 }
 
-int main() {		//0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
-	int vctr[size] = {0,3,0,4,6,0,9,5,2,7, 0,70, 6,8 ,1}, swap = 0;
+int main() {		
+	int vctr[size] = {17,29,32,0,0,0,54,193,84,61,79,12,11,0,0}, swap = 0;
 	printf("Vetor original:\t {");
 	prntvctr(vctr);
 	printf("}\n");
@@ -31,8 +31,3 @@ int main() {		//0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
 	prntvctr(vctr);
 	printf("}\n");
 }
-
-//i + zros = size?
-	//for ( enche de zero	//trim
-	/*Debug*/
-	
