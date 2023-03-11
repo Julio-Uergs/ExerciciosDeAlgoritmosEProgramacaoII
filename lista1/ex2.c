@@ -3,7 +3,7 @@
 #include <stdio.h>
 int main() {
 	int vctr[20], srch, fnd = 0;
-	printf("Por favor, insira 20 valores inteiros, destes, os 8 primeiros serão posicionados ao final e os 8 últimos, no início.\n");
+	printf("Por favor, insira 20 valores inteiros (separe-os com a tecla 'enter'): \n");
 	for (int i = 0; i<20; i++) {
 		scanf(" %d", &vctr[i]);
 	}
