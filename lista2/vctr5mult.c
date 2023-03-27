@@ -8,6 +8,7 @@ void vctrmult (int vctr[5], int sclr) {
         vctr[i] = vctr[i] * sclr;
         printf("%d ", vctr[i]);
     }
+    printf("\n");
 }
 
 int main() {
@@ -18,6 +19,5 @@ int main() {
     }
     printf("* ");
     scanf("%d", &sclr);
-    printf("= ");
     vctrmult(vctr, sclr);
 }

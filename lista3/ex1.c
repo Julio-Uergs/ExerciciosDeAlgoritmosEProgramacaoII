@@ -4,8 +4,8 @@
 #include <math.h>
 
 int pot(int n) {
-    if (n == 1) {
-        return 2;
+    if (n == 0) {
+        return 1;
     } else {
         return 2 * pot(n-1);
     }
