@@ -13,7 +13,7 @@ int main () {
 	float *dyn_vctr, temp = 0;
 	header ();
 	printf ("Insira o número de \x1b[33malunos\x1b[0m na turma: ");
-	dyn_vctr = (float*) malloc(4*scanf("%d", &num_alunos)*sizeof(float)+sizeof(float));
+	dyn_vctr = (float*) malloc (4*scanf("%d", &num_alunos)*sizeof(float)+sizeof(float));
 	system ("clear");
 	header ();
 	if (dyn_vctr == NULL) {
