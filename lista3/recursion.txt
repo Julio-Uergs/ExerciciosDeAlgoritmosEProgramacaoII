@@ -1,0 +1,5 @@
+1)  a) O programa inicia em um laço que ocorrerá três vezes. Este laço recebe um valor do usuário. Esse valor passa por uma função que o recebe por parâmetro. Essa função opera com três varíalveis, a passada por parâmetro e duas outras que são inicializadas exclusivamente para a função, sendo i igual a 1 e num igual a 0. A função chama outra função que imprime n. A função cria um laço com a condição de executar enquanto i for menor o que n. Dentro desse laço há uma segunda condição que diz que se o resto da divisão de n por i for igual a zero, então a num tem o valor i somado ao seu. i (sendo a condição de saída do laço), é incrementado e o laço se repete até a condição de parada ser atingida. No final a função retorna num para a função principal, que o imprime e o laço principal continua, até a sua condição de parada. O programa termina.
+
+    b) para numero = 1, printf = 0. para numero = 2, printf = 1. para numero 8, printf = 3
+
+    c) 1, 2, 8.
