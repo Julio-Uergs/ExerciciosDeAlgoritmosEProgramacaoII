@@ -6,11 +6,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void cnsist (int val) {
-    if (val < 1) {
+int cnsist (int val) {
+    while (val < 1) {
         printf("Este valor é menor do que um, impossibilitando a criação de uma matriz, por favor, insira um número " RED "maior" CLR " do que 1: ");
         scanf("%d", &val);
     }
+    return val;
 }
 
 void zero (int dynMatrix[], int i) {
@@ -49,9 +50,9 @@ int main () {
     int linha, coluna, *dynMatrix;
     printf("Por favor, insira o número de "RED "linhas" CLR " e " RED "colunas" CLR " desejado para uma matriz: ");
     scanf("%d", &linha);
-    cnsist(linha);
+    linha = cnsist(linha);
     scanf("%d", &coluna);
-    cnsist(coluna);
+    coluna = cnsist(coluna);
     dynMatrix = (int *) malloc(linha*coluna*sizeof(int));
     zero(dynMatrix, linha*coluna);
     fill(dynMatrix, linha*coluna);
