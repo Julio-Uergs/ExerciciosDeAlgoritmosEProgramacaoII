@@ -59,37 +59,6 @@ void mult(int dynMatrix[], int dynMatrix1[], int dynMatrix2[], int i1, int j1, i
     }
 }
 
-void matFllr(int dynMatrix[], int size) {
-    int j = 1;
-    for (int i = 0; i < size; i++) {
-        dynMatrix[i] = j++;
-    }
-}
-
-void matPrntr(int dynMatrix[], int i, int j) {
-    int b = 0;
-    for (int a = 0; a < i*j; a++) {
-        b++;
-        printf("%d\t", dynMatrix[a]);
-        if (b == j) {
-            printf("\n\n");
-            b = 0;
-        }
-    }
-}
-
-void matBldrVslzr(int i, int j) {
-    int b = 0;
-    for (int a = 0; a < i*j; a++) {
-        b++;
-        printf("X\t");
-        if (b == j) {
-            printf("\n\n");
-            b = 0;
-        }
-    }
-}
-
 void matMod(int dynMatrix[], int i, int j, int m) { // m: 0, print. 1 size, 2 error size, 3 fill.
     int b = 0, c = 0;
     for (int a = 0; a < i*j; a++) {
