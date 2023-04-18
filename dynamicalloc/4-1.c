@@ -90,8 +90,8 @@ void matBldrVslzr(int i, int j) {
     }
 }
 
-void matMod(int dynMatrix[], int i, int j, int m) {
-    int b = 0;
+void matMod(int dynMatrix[], int i, int j, int m) { // m: 0, print. 1 size, 2 error size, 3 fill.
+    int b = 0, c = 0;
     for (int a = 0; a < i*j; a++) {
         b++;
         switch (m) {
@@ -109,6 +109,18 @@ void matMod(int dynMatrix[], int i, int j, int m) {
                 }
                 break;
             case 3:
+                int d = 0;
+                hdr();
+                for (int c = 0; c < a; c++) {
+                    d++;
+                    printf("%d\t", dynMatrix[c]);
+                    if (d == j) {
+                        printf("\n\n");
+                        d = 0;
+                    }
+                }
+                printf(RED BLNK"X\t"CLR);
+                printf("\n\nPlease, fill out the matrix above: ");
                 scanf("%d", &dynMatrix[a]);
                 break;
         }
@@ -134,13 +146,13 @@ int main () {                                                           //A(i, j
     matMod(dynMatrix, l1, w1, 1);
 
     dynMatrix1 = (int*) malloc(l1*w1*sizeof(int));
-    matFllr(dynMatrix1, l1*w1);
+    matMod(dynMatrix1, l1, w1, 3);
     if (mem(dynMatrix1) != 0) {
         return 1;
     }
 
     hdr();
-    matMod(dynMatrix, l1, w1, 1);
+    matMod(dynMatrix1, l1, w1, 0);
     printf(" \tx\n\n");
     matBldr('l', 2);
     scanf("%d", &l2);
@@ -155,9 +167,9 @@ int main () {                                                           //A(i, j
         l2 = cnsist(l2);
     }
     hdr();
-    matBldrVslzr(l1, w1);
+    matMod(dynMatrix, l1, w1, 1);
     printf(" \tx\n\n");
-    matBldrVslzr(l2, 1);
+    matMod(dynMatrix, l2, 1, 1);
     matBldr('c', 2);
     scanf("%d", &w2);
     w2 = cnsist(w2);
@@ -167,7 +179,7 @@ int main () {                                                           //A(i, j
     // matBldrVslzr(l2, w2);
 
     dynMatrix2 = (int*) malloc(l2*w2*sizeof(int));
-    matFllr(dynMatrix2, l2*w2);
+    matMod(dynMatrix2, l2, w2, 3);
     if (mem(dynMatrix2) != 0) {
         return 1;
     }
@@ -175,14 +187,14 @@ int main () {                                                           //A(i, j
     dynMatrix = (int*) malloc(w1*l2*sizeof(int));
 
     hdr();
-    matPrntr(dynMatrix1, l1, w1);
+    matMod(dynMatrix1, l1, w1, 0);
     printf(" \tx\n\n");
-    matPrntr(dynMatrix2, l2, w2);
+    matMod(dynMatrix2, l2, w2, 0);
     printf(" \t=\n\n");
 
     mult(dynMatrix, dynMatrix1, dynMatrix2, l1, w1, l2, w2);
 
-    matPrntr(dynMatrix, l1, w2);
+    matMod(dynMatrix, l1, w2, 0);
 
     free(dynMatrix1);
     free(dynMatrix2);
