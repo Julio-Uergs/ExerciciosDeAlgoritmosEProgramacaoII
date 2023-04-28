@@ -101,18 +101,8 @@ void matMod(int dynMatrix[], int i, int j, int m) { // m: 0, print. 1 size, 2 er
     }
 }
 
-void matAlloc (int *dynMatrix, int *dynMatrix1, int *dynMatrix2, int i, int j, int m) {
-    switch (m) {
-        case 0:
-            dynMatrix = (int*) malloc(i*j*sizeof(int));
-            break;
-        case 1:
-            dynMatrix = (int*) malloc(i*j*sizeof(int));
-            break;
-        case 2:
-            dynMatrix2 = (int*) malloc(i*j*sizeof(int));
-            break;
-    }
+void matAlloc (int **dynMatrix, int i, int j) {
+    *dynMatrix = (int*) malloc(i*j*sizeof(int));
 }
 
 int main () {                                                           //A(i, j)  =  linha, coluna
@@ -128,7 +118,7 @@ int main () {                                                           //A(i, j
     w1 = cnsist(w1);
     hdr();
     matMod(dynMatrix1, l1, w1, 1);
-    matAlloc(&*dynMatrix, &*dynMatrix1, &*dynMatrix2, l1, w1, 1);
+    matAlloc(&dynMatrix1, l1, w1);
     matMod(dynMatrix1, l1, w1, 3);
     if (mem(dynMatrix1) != 0) {
         return 1;
@@ -155,12 +145,12 @@ int main () {                                                           //A(i, j
     matBldr('c', 2);
     scanf("%d", &w2);
     w2 = cnsist(w2);
-    matAlloc(&*dynMatrix, &*dynMatrix1, &*dynMatrix2, l1, w1, 2);
+    matAlloc(&dynMatrix2, l1, w1);
     matMod(dynMatrix2, l2, w2, 3);
     if (mem(dynMatrix2) != 0) {
         return 1;
     }
-    matAlloc(&*dynMatrix, &*dynMatrix1, &*dynMatrix2, w1, l2, 0);
+    matAlloc(&dynMatrix, w1, l2);
     hdr();
     matMod(dynMatrix1, l1, w1, 0);
     printf(" \tx\n\n");
