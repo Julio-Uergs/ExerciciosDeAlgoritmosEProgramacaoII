@@ -39,12 +39,13 @@ void matBldr (char dmnsn, int num) {
     printf(CLR" would you like to have for matrix %d? ", num);
 }
 
-void mult(int dynMatrix[], int dynMatrix1[], int dynMatrix2[], int i1, int j1, int i2, int j2) { //4 3 3 2
-    int c = 0, d = 0, e = 0, OldC = c; //b = índice da resposta | size = i1 * j2 |
-    for (int g = 0; g < j1*i2; g++){
+void mult(int dynMatrix[], int dynMatrix1[], int dynMatrix2[], int i1, int j1, int i2, int j2) { //7x2 * 2x2
+    int c = 0, d = 0, e = 0, OldC = c; //g = índice da resposta | size = i1 * j2 |
+    for (int g = 0; g < i1*j2; g++){
+        dynMatrix[g] = 0;
         for (int a = 0; a < j1; a++) {
             dynMatrix[g] += dynMatrix1[c] * dynMatrix2[d];
-            // printf("a %d\tc %d\td %d\te %d\tOldC %d\tg %d\t%d * %d  %d\n\n", a, c, d, e, OldC, g, dynMatrix1[c], dynMatrix2[d], dynMatrix[g]);
+            //printf("a %d\tc %d\td %d\te %d\tOldC %d\tg %d\t%d * %d = %d\n\n", a, c, d, e, OldC, g, dynMatrix1[c], dynMatrix2[d], dynMatrix[g]);
             c++;     //0, 1, 2 //0, 1, 2 //3, 4, 5 //3, 4, 5 //6, 7, 8 //6, 7, 8
             d += j2; //0, 2, 4 //1, 3, 5 //0, 2, 4 //1, 3, 5 //
         }
@@ -119,7 +120,6 @@ int main () {                                                           //A(i, j
     if (mem(dynMatrix1) != 0) {
         return 1;
     }
-
     hdr();
     matMod(dynMatrix1, l1, w1, 0);
     printf(" \tx\n\n");
@@ -142,29 +142,20 @@ int main () {                                                           //A(i, j
     matBldr('c', 2);
     scanf("%d", &w2);
     w2 = cnsist(w2);
-    // hdr();
-    // matBldrVslzr(l1, w1);
-    // printf(" \tx\n\n");
-    // matBldrVslzr(l2, w2);
-
     dynMatrix2 = (int*) malloc(l2*w2*sizeof(int));
     matMod(dynMatrix2, l2, w2, 3);
     if (mem(dynMatrix2) != 0) {
         return 1;
     }
-
     dynMatrix = (int*) malloc(w1*l2*sizeof(int));
-
     hdr();
     matMod(dynMatrix1, l1, w1, 0);
     printf(" \tx\n\n");
     matMod(dynMatrix2, l2, w2, 0);
     printf(" \t=\n\n");
-
     mult(dynMatrix, dynMatrix1, dynMatrix2, l1, w1, l2, w2);
-
     matMod(dynMatrix, l1, w2, 0);
-
+    //printf("%d", dynMatrix[6]);
     free(dynMatrix1);
     free(dynMatrix2);
     free(dynMatrix);

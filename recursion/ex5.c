@@ -7,7 +7,6 @@ void ImprimeSerie(int i, int j, int k) {
         printf("%d ", i + k);
         ImprimeSerie(i, j, i + k);
     }
-    printf("\n");
 }
 
 int main() {
@@ -15,4 +14,5 @@ int main() {
     printf("Insira três valores, sendo os dois primeiros uma faixa de valores e o último a quantidade de passos tomados entre cada incremento: ");
     scanf("%d %d %d", &i, &j, &k);
     ImprimeSerie(i,j,k);
+    printf("\n");
 }
