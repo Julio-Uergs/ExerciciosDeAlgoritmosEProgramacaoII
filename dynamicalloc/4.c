@@ -42,7 +42,8 @@ void matBldr (char dmnsn, int num) {
 
 void mult(int dynMatrix[], int dynMatrix1[], int dynMatrix2[], int i1, int j1, int i2, int j2) { //4 3 3 2
     int c = 0, d = 0, e = 0, OldC = c; //b = índice da resposta | size = i1 * j2 |
-    for (int g = 0; g < j1*i2; g++){
+    for (int g = 0; g < i1*j2; g++){
+        dynMatrix[g] = 0;
         for (int a = 0; a < j1; a++) {
             dynMatrix[g] += dynMatrix1[c] * dynMatrix2[d];
             // printf("a %d\tc %d\td %d\te %d\tOldC %d\tg %d\t%d * %d  %d\n\n", a, c, d, e, OldC, g, dynMatrix1[c], dynMatrix2[d], dynMatrix[g]);

@@ -1,7 +1,6 @@
 /*Crie uma função que transforma todos os caracteres de uma string em maiúsculos.*/
 
 #include <stdio.h>
-#include <string.h>
 
 char UPPER (char str[20]) {
     int i = 0;
