@@ -20,15 +20,12 @@ void pileUp (knot **beg, int val) {
         printf("Memory Full!\n");
     else {
         new->val = val; 				//atribuí o valor para a variável final.
-		printf("End Val: %p\tEnd Ptr: %p\n", &new->val, new);
         if (*beg == NULL)				//verifica se é o último  (ou, no caso, o único?) item da pilha
             new->nxt = NULL;			//se sim, salva o ponteiro como NULL, indicando que ele é o último item.
         else				
             new->nxt = *beg;			//se não, aponta para o "de baixo"
         }
 		*beg = new;						//atribuí o novo início, já que ele sempre vai mudar.
-		printf("Press Return to Main Menu");
-		getchar(), getchar();
 }
 
 void pileInBtwn (knot **beg, int val) { //i know it's not that way, but you get what I mean...
