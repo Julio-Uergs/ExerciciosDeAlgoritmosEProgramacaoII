@@ -20,10 +20,10 @@ void pileUp (knot **beg, int val) {
         printf("Memory Full!\n");
     else {
         new->val = val; 				//atribuí o valor para a variável final.
-		printf("End Val: %p\tEnd Ptr: %p\n", &new->val, new);
+		// printf("End Val: %p\tEnd Ptr: %p\n", &new->val, new);
         if (*beg == NULL)				//verifica se é o último  (ou, no caso, o único?) item da pilha
             new->nxt = NULL;			//se sim, salva o ponteiro como NULL, indicando que ele é o último item.
-        else				
+        else
             new->nxt = *beg;			//se não, aponta para o "de baixo"
         }
 		*beg = new;						//atribuí o novo início, já que ele sempre vai mudar.
@@ -114,7 +114,9 @@ void srchStack (knot *beg, int val) {
 
 void rmUp (knot **beg) {
 	knot *read = *beg;
-	if (read != NULL) 
+	if (read == NULL)
+		printf("The stack is empty!\n");
+	else {
 		if(read->nxt != NULL) {
 			*beg = read->nxt;
 			free(read);
@@ -122,14 +124,18 @@ void rmUp (knot **beg) {
 			*beg = NULL;
 			free(read);
 		}
+		printf("Removed successfully. ");
+	}
+	printf("Press Return to Main Menu");
+	getchar(), getchar();
 }
 
 void rmInBtwn (knot **beg) {
 	int pos = 0;
 	knot *read = *beg, *before;
-	if(read == NULL) {
+	if(read == NULL)
 		printf("The stack is empty!\n");
-	} else {
+	else
 		do {
 			pos++;						//incrementa contador total de posições
 			read = read->nxt;			//lê o próximo valor
@@ -146,29 +152,42 @@ void rmInBtwn (knot **beg) {
 			before = read;
 			read = read->nxt;
 			before->nxt = read->nxt;
-			free(read);		
-		}
+			free(read);
 	}
+	printf("Press Return to Main Menu");
+	getchar(), getchar();
 }
 
 void rmDown (knot **beg) {
 	bool traversed = false;
-	knot *read = *beg;
-	if (read != NULL) {
+	knot *read = *beg;						//create a variable to read file
+	//printf("End R: %p\tEnd R->N: %p\n", read, read->nxt);
+	if (read == NULL)						//if there are no values, do nothing
+		printf("The stack is empty!\n");
+	else {
 		while (read->nxt != NULL) {
-			read = read->nxt;
-			traversed = true;
+			//printf("End R: %p\tEnd R->N: %p\n", read, read->nxt);
+			read = read->nxt;				//
+			traversed = true;				//
 		}
+		//printf("End R: %p\tEnd R->N: %p\n", read, read->nxt);
 		free(read);
-		read = NULL;
+		read->nxt = NULL;
+		read = NULL;						//something around here is broken
 		if (!traversed) {
+			*beg = NULL;
+		} else {
+			traversed = false;
 			read = *beg;
 			while (read->nxt != NULL) {
-					read = read->nxt;
+				//printf("End R: %p\tEnd R->N: %p\n", read, read->nxt);
+				read = read->nxt;				//
 			}
-			read->nxt = NULL;
+			read = NULL;
 		}
 	}
+	printf("Press Return to Main Menu");
+	getchar(), getchar();
 }
 
 void mMenu (int *men) {
@@ -176,7 +195,7 @@ void mMenu (int *men) {
     system("cls");
     #endif
     #ifdef linux
-    system("clear");
+    //system("clear");
     #endif
 	printf ("Main Menu\n\n1-PileUp\n2-PileInBetween\n3-PileDown\n4-Search\n5-RemoveUp\n6-RemoveInBetween\n7-RemoveDown\n8-ListAllValues\n9-Exit\n\nInsert your option: ");
 	scanf ("%d", men);
@@ -191,7 +210,7 @@ void getVal (int *val) {
     system("cls");
     #endif
     #ifdef linux
-    system("clear");
+    //system("clear");
     #endif
 	printf("Insert any value: ");
 	scanf("%d", val);
@@ -223,6 +242,6 @@ int main () {
 					break;
 			case 8: prntStack(beg);
 					break;
-		}	
+		}
 	} while (men != 9);
 }
