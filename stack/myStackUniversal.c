@@ -119,11 +119,10 @@ void rmUp (knot **beg) {
 	else {
 		if(read->nxt != NULL) {
 			*beg = read->nxt;
-			free(read);
 		} else {
 			*beg = NULL;
-			free(read);
 		}
+		free(read);
 		printf("Removed successfully. ");
 	}
 	printf("Press Return to Main Menu");
@@ -160,34 +159,19 @@ void rmInBtwn (knot **beg) {
 
 void rmDown (knot **beg) {
 	bool traversed = false;
-	knot *read = *beg;						//create a variable to read file
-	//printf("End R: %p\tEnd R->N: %p\n", read, read->nxt);
-	if (read == NULL)						//if there are no values, do nothing
-		printf("The stack is empty!\n");
-	else {
+	knot *read = *beg, *aux;
+	if (read != NULL) {
 		while (read->nxt != NULL) {
-			//printf("End R: %p\tEnd R->N: %p\n", read, read->nxt);
-			read = read->nxt;				//
-			traversed = true;				//
+			aux = read;
+			read = read->nxt;
+			traversed = true;
 		}
-		//printf("End R: %p\tEnd R->N: %p\n", read, read->nxt);
 		free(read);
-		read->nxt = NULL;
-		read = NULL;						//something around here is broken
+		aux->nxt = NULL;
 		if (!traversed) {
 			*beg = NULL;
-		} else {
-			traversed = false;
-			read = *beg;
-			while (read->nxt != NULL) {
-				//printf("End R: %p\tEnd R->N: %p\n", read, read->nxt);
-				read = read->nxt;				//
-			}
-			read = NULL;
 		}
 	}
-	printf("Press Return to Main Menu");
-	getchar(), getchar();
 }
 
 void mMenu (int *men) {
