@@ -167,10 +167,10 @@ void rmDown (knot **beg) {
 			traversed = true;
 		}
 		free(read);
-		aux->nxt = NULL;
-		if (!traversed) {
+		if (!traversed)
 			*beg = NULL;
-		}
+		else
+			aux->nxt = NULL;
 	}
 }
 
@@ -179,7 +179,7 @@ void mMenu (int *men) {
     system("cls");
     #endif
     #ifdef linux
-    //system("clear");
+    system("clear");
     #endif
 	printf ("Main Menu\n\n1-PileUp\n2-PileInBetween\n3-PileDown\n4-Search\n5-RemoveUp\n6-RemoveInBetween\n7-RemoveDown\n8-ListAllValues\n9-Exit\n\nInsert your option: ");
 	scanf ("%d", men);
@@ -194,7 +194,7 @@ void getVal (int *val) {
     system("cls");
     #endif
     #ifdef linux
-    //system("clear");
+    system("clear");
     #endif
 	printf("Insert any value: ");
 	scanf("%d", val);
