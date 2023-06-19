@@ -21,12 +21,11 @@ int mem (int dynMatrix[]) {
     }
 }
 
-int cnsist (int val) {
-    while (val < 1) {
+void cnsist (int *val) {
+    while (*val < 1) {
         printf("The value inputted is smaller than 1. Please try again with a value " RED "bigger" CLR " than 1: ");
-        scanf("%d", &val);
+        scanf("%d", val);
     }
-    return val;
 }
 
 void matBldr (char dmnsn, int num) {
@@ -106,12 +105,12 @@ int main () {                                                           //A(i, j
     hdr();                                                                          //a21 a22
     matBldr('l', 1);                                                                //a31 a32
     scanf("%d", &l1);
-    l1 = cnsist(l1);
+    cnsist(&l1);
     hdr();
     matMod(dynMatrix, l1, 1, 1);
     matBldr('c', 1);
     scanf("%d", &w1);
-    w1 = cnsist(w1);
+    cnsist(&w1);
     hdr();
     matMod(dynMatrix, l1, w1, 1);
 
@@ -125,7 +124,7 @@ int main () {                                                           //A(i, j
     printf(" \tx\n\n");
     matBldr('l', 2);
     scanf("%d", &l2);
-    l2 = cnsist(l2);
+    cnsist(&l2);
     while (w1 != l2) {
         hdr();
         matMod(dynMatrix, l1, w1, 2);
@@ -133,7 +132,7 @@ int main () {                                                           //A(i, j
         matMod(dynMatrix, l2, 1, 1);
         printf(CLR"The numer of "RED"lines"CLR " (%d) of your second matrix must be "RED"equal"CLR" to the number of "RED"columns"CLR" (%d) of your first matrix, please try again: ", l2, w1);
         scanf("%d", &l2);
-        l2 = cnsist(l2);
+        cnsist(&l2);
     }
     hdr();
     matMod(dynMatrix, l1, w1, 1);
@@ -141,7 +140,7 @@ int main () {                                                           //A(i, j
     matMod(dynMatrix, l2, 1, 1);
     matBldr('c', 2);
     scanf("%d", &w2);
-    w2 = cnsist(w2);
+    cnsist(&w2);
     dynMatrix2 = (int*) malloc(l2*w2*sizeof(int));
     matMod(dynMatrix2, l2, w2, 3);
     if (mem(dynMatrix2) != 0) {
